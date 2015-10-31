@@ -1,6 +1,10 @@
 package main
 
-import "os"
+import (
+	"os"
+
+	"github.com/cloudfoundry-community/go-cfenv"
+)
 
 func main() {
 	// convenience method; consider removing
@@ -9,6 +13,11 @@ func main() {
 		port = "3000"
 	}
 
-	server := NewServer()
+	appEnv, err := cfenv.Current()
+	if err != nil {
+		panic(err.Error())
+	}
+
+	server := NewServer(appEnv)
 	server.Run(":" + port)
 }
