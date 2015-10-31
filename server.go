@@ -31,7 +31,7 @@ func initRoutes(mx *mux.Router, formatter *render.Render, appEnv *cfenv.App) {
 }
 
 func vcapHandler(formatter *render.Render, appEnv *cfenv.App) http.HandlerFunc {
-	val, err := cftools.GetVCAPServiceProperty("dispenser-task-service", "uri", appEnv)
+	val, err := cftools.GetVCAPServiceProperty("beer-service", "target-url", appEnv)
 
 	return func(w http.ResponseWriter, req *http.Request) {
 		if err != nil {
