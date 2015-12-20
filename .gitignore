@@ -28,3 +28,4 @@ _steps/
 vcap*.json
 
 vcap
+/spaceman.yml
